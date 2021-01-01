@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DvdService } from './dvd.service';
 
 @Component({
   selector: 'app-root',
