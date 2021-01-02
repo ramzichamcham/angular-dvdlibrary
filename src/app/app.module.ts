@@ -10,6 +10,7 @@ import { HomeModule } from './home/home.module';
 import { CreateModule } from './create/create.module';
 import { EditModule } from './edit/edit.module';
 import { ViewModule } from './view/view.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
