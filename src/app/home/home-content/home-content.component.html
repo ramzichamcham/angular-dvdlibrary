@@ -9,17 +9,25 @@
       </tr>
     </thead>
     <tbody>
-      <!-- <tr *ngFor="let page of pages" scope="row">
+      <tr *ngFor="let dvd of dvds" scope="row">
+        <td>{{ dvd.title}}</td>
+        <td>{{ dvd.releaseYear}}</td>
+        <td>{{ dvd.director}}</td>
+        <td>{{ dvd.rating }}</td>
         <td>
-          <a
+            <a href="/edit"
             target="_blank"
-            [href]="'https://en.wikipedia.org?curid=' + page.pageid"
-          >
-            {{ page.title }}
+            
+            >
+            edit
           </a>
+          <span>|</span>
+          <a target="_blank"
+          ></a>
+          delete
+        
         </td>
-        <td>{{ page.wordcount }}</td>
-        <td [innerHTML]="page.snippet"></td>
-      </tr> -->
+        
+      </tr>
     </tbody>
   </table>

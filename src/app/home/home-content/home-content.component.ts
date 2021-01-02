@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { DvdService } from './../../dvd.service';
+import { Component, OnInit, Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-home-content',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeContentComponent implements OnInit {
 
-  constructor() { }
+  @Input() dvds = [];
+
+  constructor(private dvd: DvdService) {
+    
+   }
 
   ngOnInit(): void {
+    console.log("zabre");
+    this.dvd.getAllDvds().subscribe((response: any) => {
+      this.dvds = response;
+    });
   }
 
 }
