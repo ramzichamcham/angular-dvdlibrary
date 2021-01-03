@@ -12,7 +12,7 @@ export class CreateHomeComponent implements OnInit {
   }
 
   title = 'Create a Dvd';
-  @ViewChild('f', { static: false }) signupForm: NgForm;
+  @ViewChild('f', { static: false }) createDvdForm: NgForm;
 
   note = '';
 
@@ -28,14 +28,13 @@ export class CreateHomeComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.dvd.title = this.signupForm.value.dvdData.dvdTitle;
-    this.dvd.releaseYear = this.signupForm.value.dvdData.dvdReleaseYear;
-    this.dvd.director = this.signupForm.value.dvdData.dvdDirector;
-    // this.dvd.rating = this.signupForm.value.dvdRating;
-    this.dvd.notes = this.signupForm.value.dvdData.dvdNotes;
+    this.dvd.title = this.createDvdForm.value.dvdData.dvdTitle;
+    this.dvd.releaseYear = this.createDvdForm.value.dvdData.dvdReleaseYear;
+    this.dvd.director = this.createDvdForm.value.dvdData.dvdDirector;
+    // this.dvd.rating = this.createDvdForm.value.dvdRating;
+    this.dvd.notes = this.createDvdForm.value.dvdData.dvdNotes;
 
     console.log(this.dvd.rating);
-    console.log("hey");
-    this.signupForm.reset();
+    this.createDvdForm.reset();
   }
 }
