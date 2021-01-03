@@ -11,7 +11,7 @@ export class DvdService {
   public getAllDvds(){
     return this.http.get('http://localhost:8080/api/dvds', {
       params: {
-        
+
       }
     });
   }
@@ -36,6 +36,18 @@ export class DvdService {
     {headers: new HttpHeaders({'Content-Type': 'application/json'})}
     );
   }
+
+  public findDvdbycategory(category, value){
+    let url = 'http://localhost:8080/api/dvds/' + category + '/' + value;
+
+    return this.http.get(url, {
+      params: {
+      }
+    })
+
+  }
+
+
 
 //   this.http.post<any>('https://jsonplaceholder.typicode.com/posts', { title: 'Angular POST Request Example' }).subscribe(data => {
 //     this.postId = data.id;

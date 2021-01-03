@@ -19,6 +19,14 @@ export class HomeContentComponent implements OnInit {
     this.dvd.getAllDvds().subscribe((response: any) => {
       this.dvds = response;
     });
+
+
+  }
+
+  onSearch(category, value){
+    this.dvd.findDvdbycategory('director', 'Joe Smith').subscribe((response: any)=> {
+      this.dvds = response;
+  });
   }
 
 }
