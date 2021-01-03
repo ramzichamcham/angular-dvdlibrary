@@ -16,7 +16,6 @@ export class HomeContentComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log("zabre");
     this.dvd.getAllDvds().subscribe((response: any) => {
       this.dvds = response;
     });

@@ -1,3 +1,4 @@
+import { DvdService } from './../../dvd.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -8,6 +9,10 @@ import { NgForm } from '@angular/forms';
 })
 export class CreateHomeComponent implements OnInit {
   ngOnInit(): void {
+    
+  }
+
+  constructor(private dvdS: DvdService) {
     
   }
 
@@ -35,6 +40,7 @@ export class CreateHomeComponent implements OnInit {
     this.dvd.notes = this.createDvdForm.value.dvdData.dvdNotes;
 
     console.log(this.dvd.rating);
+    this.dvdS.addDvd(this.dvd);
     this.createDvdForm.reset();
   }
 }
