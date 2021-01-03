@@ -31,7 +31,7 @@ export class DvdService {
       });
       const body = JSON.stringify(dvd);
 
-      console.log(body);
+    console.log(body);
     return this.http.post('http://localhost:8080/api/dvd', body, 
     {headers: new HttpHeaders({'Content-Type': 'application/json'})}
     );
