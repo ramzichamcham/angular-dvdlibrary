@@ -42,8 +42,7 @@ export class EditHomeComponent implements OnInit {
     this.dvd.notes = this.createDvdForm.value.dvdData.dvdNotes;
 
     console.log(this.dvd.rating);
-    this.dvdS.addDvd(this.dvd);
-    this.createDvdForm.reset();
+    this.dvdS.updateDvd(this.dvd);
   }
 
 }

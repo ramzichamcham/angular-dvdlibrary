@@ -11,24 +11,24 @@ export class DvdService {
   public getAllDvds(){
     return this.http.get('http://localhost:8080/api/dvds', {
       params: {
+        
       }
     });
   }
 
-  public getDvdByTitle(title: string){
-    return this.http.get('http://localhost:8080/api/', {
-      params: {
-        title: title
-      }
-    });
+  public updateDvd(dvd){
+    const body = JSON.stringify(dvd);
+    return this.http.put('http://localhost:8080/api/dvd' + dvd.id, body, 
+    {headers: new HttpHeaders({'Content-Type': 'application/json'})}
+    );
   }
 
   public addDvd(dvd){
 
-    const header = new Headers(
-      {
-          'Content-Type': 'application/json'
-      });
+    // const header = new Headers(
+    //   {
+    //       'Content-Type': 'application/json'
+    //   });
       const body = JSON.stringify(dvd);
 
     console.log(body);
