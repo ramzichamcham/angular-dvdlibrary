@@ -11,11 +11,20 @@ export class HomeContentComponent implements OnInit {
 
   @Input() dvds = [];
 
+  @Input() category;
+
+  @Input() term;
+
   constructor(private dvd: DvdService) {
     
    }
 
   ngOnInit(): void {
+    console.log("content oninit");
+    console.log("got category: " + this.category + " and " + this.term)
+
+    //if category and term are defined, then call on search(category, term)
+    
     this.dvd.getAllDvds().subscribe((response: any) => {
       this.dvds = response;
     });
@@ -23,8 +32,8 @@ export class HomeContentComponent implements OnInit {
 
   }
 
-  onSearch(category, value){
-    this.dvd.findDvdbycategory('director', 'Joe Smith').subscribe((response: any)=> {
+  onSearch(category, term){
+    this.dvd.findDvdbycategory(category, term).subscribe((response: any)=> {
       this.dvds = response;
   });
   }

@@ -16,6 +16,16 @@ export class DvdService {
     });
   }
 
+  public findDvdbycategory(category, value){
+    let url = 'http://localhost:8080/api/dvds/' + category + '/' + value;
+
+    return this.http.get(url, {
+      params: {
+      }
+    })
+
+  }
+
   public updateDvd(dvd){
     const body = JSON.stringify(dvd);
     return this.http.put('http://localhost:8080/api/dvd' + dvd.id, body, 
@@ -37,15 +47,7 @@ export class DvdService {
     );
   }
 
-  public findDvdbycategory(category, value){
-    let url = 'http://localhost:8080/api/dvds/' + category + '/' + value;
 
-    return this.http.get(url, {
-      params: {
-      }
-    })
-
-  }
 
 
 

@@ -1,16 +1,23 @@
 <div class="containter">
-    <form class="form-inline">
-        
+    
+    <form class="form-inline" (ngSubmit)="onSearch()" #f="ngForm">
+
+        <div class="row"
+          id="search-data"
+          ngModelGroup="searchData"
+          #searchData="ngModelGroup">
+
+
             <div class="form-group offset-md-1">
                 <form action="/create">
-                    <button type="submit" class="btn btn-primary">Create DVD</button>
+                    <button  class="btn btn-primary">Create DVD</button>
                 </form>
             </div>
             <div class="form-group offset-md-2">
                 <button type="submit" class="btn btn-primary">Search</button>
             </div>
             <div class="form-group col-md-2">
-                <select class="form-control" id="categorySelect">
+                <select class="form-control" id="categorySelect" name="categorySelect">
                     <option value="Search Category">Search Category</option>
                     <option value="title">Title</option>
                     <option value="release year">Release Year</option>
@@ -18,7 +25,9 @@
                     <option value="rating">Rating</option>
                   </select>
             </div>
-            <input type="text" class="form-control" id="searchTerm">
+            <input type="text" class="form-control" id="searchTerm" name="searchTerm">
+        
+        </div>
 
       </form>
 
@@ -27,7 +36,7 @@
       
       <hr>
       <!-- add the content under the top -->
-      <app-home-content></app-home-content>
+      <app-home-content [category]="category" [term]="term"></app-home-content>
 
 </div>
 
