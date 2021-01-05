@@ -10,6 +10,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./create-home.component.css']
 })
 export class CreateHomeComponent implements OnInit {
+
+  selectedRating= "G";
+
   ngOnInit(): void {
     
   }
