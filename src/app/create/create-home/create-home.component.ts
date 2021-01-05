@@ -1,6 +1,8 @@
+import { Location } from '@angular/common';
 import { DvdService } from './../../dvd.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-home',
@@ -12,7 +14,7 @@ export class CreateHomeComponent implements OnInit {
     
   }
 
-  constructor(private dvdS: DvdService) {
+  constructor(private dvdS: DvdService, private route: ActivatedRoute, private location: Location) {
     
   }
 
@@ -45,6 +47,6 @@ export class CreateHomeComponent implements OnInit {
   }
 
   onCancel(){
-    
+    this.location.back();
   }
 }
