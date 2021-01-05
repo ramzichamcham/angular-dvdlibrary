@@ -1,7 +1,7 @@
 export interface Dvd{
     id: number,
     title: string,
-    releaseYear: string,
+    releaseYear: number,
     director: string,
     rating: string,
     notes: string

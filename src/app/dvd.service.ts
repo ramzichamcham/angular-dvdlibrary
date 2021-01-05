@@ -1,20 +1,24 @@
+import { Dvd } from './dvd';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
 export class DvdService {
+  private dvdUrl = 'http://localhost:8080/api';  // URL to web api
+
+
 
   constructor(private http: HttpClient) {}
 
-  public getAllDvds(){
-    return this.http.get('http://localhost:8080/api/dvds', {
-      params: {
+  getDvds(): Observable<Dvd[]> {
+    return this.http.get<Dvd[]>(this.dvdUrl + '/dvds');
 
-      }
-    });
   }
+
+
 
   public findDvdbycategory(category, value){
     let url = 'http://localhost:8080/api/dvds/' + category + '/' + value;

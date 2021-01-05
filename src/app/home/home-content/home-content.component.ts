@@ -1,6 +1,6 @@
 import { DvdService } from './../../dvd.service';
 import { Component, OnInit, Input } from '@angular/core';
-
+import {Dvd} from './../../dvd'
 
 @Component({
   selector: 'app-home-content',
@@ -9,33 +9,30 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HomeContentComponent implements OnInit {
 
-  @Input() dvds = [];
+  dvds: Dvd[];
 
   @Input() category;
 
   @Input() term;
 
-  constructor(private dvd: DvdService) {
+  constructor(private dvdServ: DvdService) {
     
    }
 
   ngOnInit(): void {
-    console.log("content oninit");
-    console.log("got category: " + this.category + " and " + this.term)
 
     //if category and term are defined, then call on search(category, term)
     
-    this.dvd.getAllDvds().subscribe((response: any) => {
-      this.dvds = response;
-    });
+    this.getDvds();
+    //print dvd array
 
 
   }
 
-  onSearch(category, term){
-    this.dvd.findDvdbycategory(category, term).subscribe((response: any)=> {
-      this.dvds = response;
-  });
+
+  getDvds(): void{
+    this.dvdServ.getDvds()
+    .subscribe(dvds => this.dvds = dvds)
   }
 
 }
