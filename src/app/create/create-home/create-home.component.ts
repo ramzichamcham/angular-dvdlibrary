@@ -43,7 +43,9 @@ export class CreateHomeComponent implements OnInit {
 
     console.log(this.newDvd)
 
-    this.dvdServ.addDvd(this.newDvd);
+    this.dvdServ.addDvd(this.newDvd)
+    .subscribe(response => console.log(response.toString))
+    ;
 
     this.createDvdForm.reset();
     //service.add
