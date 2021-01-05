@@ -42,7 +42,7 @@ export class HomeContentComponent implements OnInit {
   }
 
   getByCategory(){
-    this.dvdServ.getBycategory(this.category, this.term)
+    this.dvdServ.getByCategory(this.category, this.term)
     .subscribe(dvds => this.dvds = dvds);
   }
 
