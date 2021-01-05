@@ -14,21 +14,17 @@ export class HomeTopComponent implements OnInit {
     term: string;
 
   onSearch(){
-    console.log("hello");
     
     //get category value
     this.category = this.searchDvdForm.value.searchData.categorySelect;
-    this.category = 'title';
+    // this.category = 'title';
     console.log(this.category)
 
     //get search term value
     this.term = this.searchDvdForm.value.searchData.searchTerm;
-    this.term = 'A Wonderful Tale';
+    // this.term = 'A Wonderful Tale';
     console.log(this.term);
-    
-    //set category and term properties to use in data binding with child component
 
-    //reload page or content component
   }
 
   constructor() { }

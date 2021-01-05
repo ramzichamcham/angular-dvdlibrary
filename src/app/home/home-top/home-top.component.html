@@ -1,6 +1,7 @@
 <div class="containter">
     
-    <form class="form-inline" (ngSubmit)="onSearch()" #f="ngForm">
+    
+    <form (ngSubmit)="onSearch()" #f="ngForm">
 
         <div class="row"
           id="search-data"
@@ -25,7 +26,10 @@
                     <option value="rating">Rating</option>
                   </select>
             </div>
-            <input type="text" class="form-control" id="searchTerm" name="searchTerm">
+            <div class="form-group col-md-2">
+                <input type="text" class="form-control" id="searchTerm" name="searchTerm">
+            </div>
+            
         
         </div>
 
