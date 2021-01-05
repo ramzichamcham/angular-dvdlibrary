@@ -11,8 +11,7 @@
     <tbody>
       <tr *ngFor="let dvd of dvds" scope="row">
         <td>
-            <a href="/view"
-            >
+            <a href="/view/{{dvd.id}}">
             {{ dvd.title}}
             </a>
         </td>
@@ -20,7 +19,7 @@
         <td>{{ dvd.director}}</td>
         <td>{{ dvd.rating }}</td>
         <td>
-            <a href="/edit"
+            <a routerLink="/edit/{{dvd.id}}"
             >
             edit
           </a>
