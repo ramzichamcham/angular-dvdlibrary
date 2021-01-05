@@ -24,8 +24,8 @@ export class DvdService {
     return this.http.post<Dvd>(this.dvdUrl + '/dvd', dvd, this.httpOptions);
   }
 
-  public getBycategory(category, value){
-    return this.http.get<Dvd[]>(this.dvdUrl + '/dvds'+ category + '/' + value);
+  public getByCategory(category, value){
+    return this.http.get<Dvd[]>(this.dvdUrl + '/dvds/'+ category + '/' + value);
 
 
   }
