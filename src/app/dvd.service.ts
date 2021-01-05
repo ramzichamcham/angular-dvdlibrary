@@ -24,13 +24,9 @@ export class DvdService {
     return this.http.post<Dvd>(this.dvdUrl + '/dvd', dvd, this.httpOptions);
   }
 
-  public findDvdbycategory(category, value){
-    let url = 'http://localhost:8080/api/dvds/' + category + '/' + value;
+  public getBycategory(category, value){
+    return this.http.get<Dvd[]>(this.dvdUrl + '/dvds'+ category + '/' + value);
 
-    return this.http.get(url, {
-      params: {
-      }
-    })
 
   }
 
