@@ -8,9 +8,9 @@ import { HomeContentComponent } from './home-content/home-content.component';
 
 
 const routes: Routes = [
-  {path: 'home', component: HomeTopComponent},
-  {path: 'home', component: HomeContentComponent},
-  {path: '', redirectTo: '/home', pathMatch:'full'}
+  // {path: 'home', component: HomeTopComponent},
+  // {path: 'home', component: HomeContentComponent},
+  // {path: '', redirectTo: '/home', pathMatch:'full'}
 ];
 
 @NgModule({
