@@ -9,7 +9,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class DvdService {
   private dvdUrl = 'http://localhost:8080/api';  // URL to web api
 
-
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(private http: HttpClient) {}
 
@@ -18,7 +20,9 @@ export class DvdService {
 
   }
 
-
+  addDvd(dvd: Dvd): Observable<Dvd>{
+    return this.http.post<Dvd>(this.dvdUrl + '/dvd', dvd, this.httpOptions);
+  }
 
   public findDvdbycategory(category, value){
     let url = 'http://localhost:8080/api/dvds/' + category + '/' + value;
@@ -37,26 +41,27 @@ export class DvdService {
     );
   }
 
-  public addDvd(dvd){
+  // public addDvd(dvd){
 
-    // const header = new Headers(
-    //   {
-    //       'Content-Type': 'application/json'
-    //   });
-      const body = JSON.stringify(dvd);
+  //   // const header = new Headers(
+  //   //   {
+  //   //       'Content-Type': 'application/json'
+  //   //   });
+  //     const body = JSON.stringify(dvd);
 
-    console.log(body);
-    return this.http.post('http://localhost:8080/api/dvd', body, 
-    {headers: new HttpHeaders({'Content-Type': 'application/json'})}
-    );
-  }
-
-
-
-
+  //   console.log(body);
+  //   return this.http.post('http://localhost:8080/api/dvd', body, 
+  //   {headers: new HttpHeaders({'Content-Type': 'application/json'})}
+  //   );
 
 //   this.http.post<any>('https://jsonplaceholder.typicode.com/posts', { title: 'Angular POST Request Example' }).subscribe(data => {
 //     this.postId = data.id;
 // })
 
+
 }
+
+
+
+
+
