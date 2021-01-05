@@ -14,7 +14,7 @@ import { Location } from '@angular/common';
 })
 export class HomeContentComponent implements OnInit {
 
-  dvds: Dvd[];
+  dvds: Dvd[]=[];
 
   @Input() category;
 
@@ -25,19 +25,26 @@ export class HomeContentComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    console.log("home content")
+    console.log(this.category);
+    console.log(this.term);
 
     //if category and term are defined, then call on search(category, term)
     
     this.getDvds();
     //print dvd array
-
-
   }
 
 
   getDvds(): void{
     this.dvdServ.getDvds()
-    .subscribe(dvds => this.dvds = dvds)
+    .subscribe(dvds => this.dvds = dvds);
   }
+
+  getByCategory(){
+    this.dvdServ.getBycategory(this.category, this.term)
+    .subscribe(dvds => this.dvds = dvds);
+  }
+
 
 }
