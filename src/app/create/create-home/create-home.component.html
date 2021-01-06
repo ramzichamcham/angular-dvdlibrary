@@ -1,5 +1,6 @@
 <div class="container">
-  <h1 class="text-center">{{ title }}</h1>
+  <h1 class="">{{ title }}</h1>
+  <hr>
   <div class="row">
     <div class="col-6" id='formInput'>
       <form (ngSubmit)="onSubmit()" #f="ngForm">
@@ -17,6 +18,7 @@
               class="form-control"
               ngModel
               name="dvdTitle"
+              placeholder="Enter Title"
               required>
           </div> <!-- formgroup: dvdTitle -->
 
@@ -30,6 +32,7 @@
               class="form-control"
               ngModel
               name="dvdReleaseYear"
+              placeholder="Enter Release Year"
               required
               >
             <!-- <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span> -->
@@ -45,6 +48,7 @@
               class="form-control"
               ngModel
               name="dvdDirector"
+              placeholder="Enter Director"
               required
             >
 
@@ -59,6 +63,7 @@
               name="dvdRating"
               [(ngModel)]="selectedRating"
               >
+              
               <option value="G">G</option>
               <option value="PG">PG</option>
               <option value="PG-13">PG-13</option>
@@ -94,7 +99,7 @@
               <button
             class="offset-sm-1 btn btn-primary"
             type="submit"
-            [disabled]="!f.valid">Submit</button>
+            [disabled]="!f.valid">Create Dvd</button>
             </div>
 
 

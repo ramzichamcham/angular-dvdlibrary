@@ -11,6 +11,7 @@ import {Dvd} from './../../dvd'
 })
 export class CreateHomeComponent implements OnInit {
   newDvd: Dvd;
+  title = 'Create Dvd';
   
   selectedRating= 'G';
   note='';
@@ -23,7 +24,7 @@ export class CreateHomeComponent implements OnInit {
     
   }
 
-  title = 'Create a Dvd';
+
   @ViewChild('f', { static: false }) createDvdForm: NgForm;
 
   submitted = false;
