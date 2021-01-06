@@ -37,6 +37,10 @@ export class DvdService {
     return this.http.put(this.dvdUrl + '/dvd/' + dvd.id , dvd, this.httpOptions);
   }
 
+  public deleteById(id: number){
+    return this.http.delete(this.dvdUrl +'/dvd/' + id);
+  }
+
   // public addDvd(dvd){
 
   //   // const header = new Headers(
