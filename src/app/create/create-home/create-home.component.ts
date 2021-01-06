@@ -10,6 +10,8 @@ import {Dvd} from './../../dvd'
   styleUrls: ['./create-home.component.css']
 })
 export class CreateHomeComponent implements OnInit {
+
+  title = 'Create Dvd';
   newDvd: Dvd = {
     id: null,
     title: '',
@@ -19,11 +21,7 @@ export class CreateHomeComponent implements OnInit {
     notes: ''
   };
 
-  title = 'Create Dvd';
   errors = '';
-
-  selectedRating= 'G';
-  note='';
 
   ngOnInit(): void {
     
@@ -46,7 +44,7 @@ export class CreateHomeComponent implements OnInit {
     if(this.validInput()){
       this.errors='';
 
-      this.addDvd(this.newDvd);
+      this.addDvd();
 
     this.createDvdForm.reset();
     this.submitted=false;
@@ -58,9 +56,9 @@ export class CreateHomeComponent implements OnInit {
 
   }
 
-  addDvd(newDvd: Dvd){
+  addDvd(){
     this.dvdServ.addDvd(this.newDvd)
-    .subscribe(response => console.log(response.toString))
+    .subscribe(response => console.log(response.toString()))
     ;
   }
 
@@ -71,9 +69,11 @@ export class CreateHomeComponent implements OnInit {
   validInput(): boolean{
     if(this.newDvd.title==""){
       this.errors='<li class=" alert alert-danger">Please enter a title for the Dvd </li>';
+      return false;
     }else if(this.newDvd.releaseYear == null){
       this.errors='<li class=" alert alert-danger">Please enter a release year </li>';
-    }else if(this.newDvd.releaseYear.toString.length !==4){
+      return false;
+    }else if(this.newDvd.releaseYear.toString.length !=4){
       this.errors='<li class=" alert alert-danger">Please enter a 4-digit year </li>';
       return false;
     }else{

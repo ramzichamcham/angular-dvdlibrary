@@ -20,12 +20,12 @@ export class EditHomeComponent implements OnInit {
     notes: ''
   };
 
+  errors='';
+
 
   ngOnInit(): void {
     this.getDvd();
   }
-
-
 
   constructor(private dvdServ: DvdService, 
               private route: ActivatedRoute,
@@ -40,16 +40,19 @@ export class EditHomeComponent implements OnInit {
 
 
   onSubmit() {
+    console.log(this.dvd);
+    console.log(this.dvd.releaseYear);
+    console.log(this.dvd.releaseYear.toString().length);
+    if(this.validInput()){
+      this.updateDvd();
+      this.goBack();
+    }
 
-    this.dvdServ.updateDvd(this.dvd)
-    .subscribe(response => console.log(response));
-    ;
-    this.goBack();
+
   }
 
   getDvd() {
     const id = +this.route.snapshot.paramMap.get('id');
-
     this.dvdServ.getDvd(id)
     .subscribe(dvd => this.dvd = dvd);
   }
@@ -58,9 +61,30 @@ export class EditHomeComponent implements OnInit {
     this.location.back();
   }
 
+  updateDvd(){
+    this.dvdServ.updateDvd(this.dvd)
+    .subscribe(response => console.log(response));
+    ;
+  }
+
   goBack(){
     this.location.back();
   }
   
+  validInput(): boolean{
+    if(this.dvd.title==""){
+      this.errors='<li class=" alert alert-danger">Please enter a title for the Dvd </li>';
+      return false;
+    }else if(this.dvd.releaseYear == null){
+      this.errors='<li class=" alert alert-danger">Please enter a release year </li>';
+      return false;
+    }else if(this.dvd.releaseYear.toString().length !== 4){
+      this.errors='<li class=" alert alert-danger">Please enter a 4-digit year </li>';
+      return false;
+    }else{
+      return true;
+    }
+
+  }
 
 }

@@ -1,18 +1,14 @@
 <div class="container">
-    <h1 class="text-center">{{ title }}</h1>
+    <h1 class="">{{ title }}</h1>
+    <hr>
+
+    <ul class="list-group" [innerHtml]="errors" id="editErrorMessages"></ul>
+
+
     <div class="row">
       <div class="col-6" id='formInput'>
         <form (ngSubmit)="onSubmit()" #f="ngForm">
-            <!-- <ul>
-                <li class="alert alert-danger" *ngIf="!dvdReleaseYear.valid">
-                    Please enter a valid year
-                </li>
-                <li class="alert alert-danger" *ngIf="dvdReleaseYear.error.minlength">
-                    Please enter a 4 digit year
-                </li>
-            </ul> -->
-
-
+          
           <div
             id="dvd-data"
             ngModelGroup="dvdData"
