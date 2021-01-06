@@ -22,11 +22,11 @@
             <a routerLink="/edit/{{dvd.id}}">
             edit
           </a>
-          <span>|</span>
-          <a target="_blank"
-          ></a>
-          delete
-        
+          <span>| </span>
+          <a routerLink="" (click)="delete(dvd.id)">
+            <span>delete</span>
+        </a>
+
         </td>
         
       </tr>

@@ -46,5 +46,16 @@ export class HomeContentComponent implements OnInit {
     .subscribe(dvds => this.dvds = dvds);
   }
 
+  delete(id: number){
+    if(window.confirm('Are sure you want to delete this item ?')){
+      this.dvdServ.deleteById(id)
+      .subscribe(response => console.log(response));
+      
+      this.dvds = this.dvds.filter(function(obj){
+        return obj.id !== id;
+    });
+    }
+
+  }
 
 }
