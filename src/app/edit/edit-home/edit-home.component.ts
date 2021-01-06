@@ -13,7 +13,7 @@ import { NgForm } from '@angular/forms';
 export class EditHomeComponent implements OnInit {
 
   title = 'Edit Dvd';
-  @ViewChild('f', { static: false }) createDvdForm: NgForm;
+  @ViewChild('f', { static: false }) editDvdForm: NgForm;
 
   dvd: Dvd = {
     id: null,
