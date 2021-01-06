@@ -7,6 +7,7 @@
 <table class="table table-striped" id="dvdTable">
     <thead>
       <tr>
+        <!-- Table headers -->
         <th scope="col">Title</th>
         <th scope="col">Release Date</th>
         <th scope="col">Director</th>
@@ -15,6 +16,7 @@
       </tr>
     </thead>
     <tbody>
+      <!-- fill table -->
       <tr *ngFor="let dvd of dvds" scope="row">
         <td>
             <a href="/view/{{dvd.id}}">
@@ -25,7 +27,7 @@
         <td>{{ dvd.director}}</td>
         <td>{{ dvd.rating }}</td>
         <td>
-            <a routerLink="/edit/{{dvd.id}}">
+          <a routerLink="/edit/{{dvd.id}}">
             edit
           </a>
           <span>| </span>
