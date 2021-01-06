@@ -10,8 +10,8 @@ export class HomeTopComponent implements OnInit {
 
   @ViewChild('f', { static: false }) searchDvdForm: NgForm;
 
-    selectedCategory: string;
-    term: string;
+    selectedCategory: string = '';
+    term: string = '';
 
   onSearch(){
     

@@ -15,6 +15,7 @@ import { Location } from '@angular/common';
 export class HomeContentComponent implements OnInit {
 
   dvds: Dvd[]=[];
+  errors='';
 
   @Input() category;
 
@@ -25,14 +26,9 @@ export class HomeContentComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log("home content")
-    console.log(this.category);
-    console.log(this.term);
-
-    //if category and term are defined, then call on search(category, term)
     
     this.getDvds();
-    //print dvd array
+
   }
 
 
@@ -42,8 +38,17 @@ export class HomeContentComponent implements OnInit {
   }
 
   getByCategory(){
-    this.dvdServ.getByCategory(this.category, this.term)
-    .subscribe(dvds => this.dvds = dvds);
+    console.log(this.category);
+    console.log(this.term);
+
+    if(this.validInput()){
+      this.errors='';
+      this.dvdServ.getByCategory(this.category, this.term)
+      .subscribe(dvds => this.dvds = dvds);
+    }else{
+
+    }
+
   }
 
   delete(id: number){
@@ -54,6 +59,15 @@ export class HomeContentComponent implements OnInit {
       this.dvds = this.dvds.filter(function(obj){
         return obj.id !== id;
     });
+    }
+  }
+
+  validInput(): boolean{
+    if(this.category=="" || this.term==""){
+      this.errors='<li class=" alert alert-danger">Both Search Category and Search Term are required</li>';
+      return false;
+    }else{
+      return true;
     }
 
   }
