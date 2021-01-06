@@ -11,6 +11,10 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./edit-home.component.css']
 })
 export class EditHomeComponent implements OnInit {
+
+  title = 'Edit Dvd';
+  @ViewChild('f', { static: false }) createDvdForm: NgForm;
+
   dvd: Dvd = {
     id: null,
     title: '',
@@ -32,17 +36,10 @@ export class EditHomeComponent implements OnInit {
               private location: Location
     ) {}
 
-  title = 'Edit Dvd';
-  @ViewChild('f', { static: false }) createDvdForm: NgForm;
-
-
-  submitted = false;
 
 
   onSubmit() {
-    console.log(this.dvd);
-    console.log(this.dvd.releaseYear);
-    console.log(this.dvd.releaseYear.toString().length);
+
     if(this.validInput()){
       this.updateDvd();
       this.goBack();

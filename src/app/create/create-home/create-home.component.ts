@@ -38,21 +38,13 @@ export class CreateHomeComponent implements OnInit {
 
 
   onSubmit() {
-    this.submitted = true;
     //fill new dvd with user input
-    console.log(this.newDvd);
     if(this.validInput()){
       this.errors='';
-
       this.addDvd();
 
     this.createDvdForm.reset();
-    this.submitted=false;
     }
-
-
-
-
 
   }
 
@@ -73,7 +65,7 @@ export class CreateHomeComponent implements OnInit {
     }else if(this.newDvd.releaseYear == null){
       this.errors='<li class=" alert alert-danger">Please enter a release year </li>';
       return false;
-    }else if(this.newDvd.releaseYear.toString.length !=4){
+    }else if(this.newDvd.releaseYear.toString().length !=4){
       this.errors='<li class=" alert alert-danger">Please enter a 4-digit year </li>';
       return false;
     }else{
