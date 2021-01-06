@@ -9,24 +9,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class HomeTopComponent implements OnInit {
 
   @ViewChild('f', { static: false }) searchDvdForm: NgForm;
-
+    
+  // binded variables
     selectedCategory: string = '';
     term: string = '';
-
-  onSearch(){
-    
-    //get category value
-
-    console.log(this.selectedCategory);
-
-    //get search term value
-  
-    // this.term = 'A Wonderful Tale';
-    console.log(this.term);
-
-    //call child onSearch()
-
-  }
 
   constructor() { }
 

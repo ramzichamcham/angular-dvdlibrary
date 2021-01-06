@@ -1,7 +1,7 @@
 <div class="containter">
     
-    
-    <form (ngSubmit)="onSearch()" #f="ngForm" class="search-top">
+    <!-- Search bar form -->
+    <form #f="ngForm" class="search-top">
 
         <div class="row"
           id="search-data"
@@ -14,13 +14,15 @@
                     <a routerLink="/create">
                         <button  class="btn btn-primary">Create DVD</button>
                     </a>
-                    
                 </form>
-            </div>
+            </div><!--Create Button-->
+
             <div class="form-group offset-md-2">
-                    <button type="submit" class="btn btn-primary" (click)="homeContent.getByCategory()">Search</button>
-                
-            </div>
+                    <button type="submit" 
+                    class="btn btn-primary" 
+                    (click)="homeContent.getByCategory()">Search</button>  
+            </div><!--Search Button-->
+
             <div class="form-group col-md-2">
                 <select class="form-control" id="categorySelect" name="categorySelect" 
                 [(ngModel)]="selectedCategory">
@@ -30,11 +32,12 @@
                     <option value="director">Director Name</option>
                     <option value="rating">Rating</option>
                   </select>
-            </div>
+            </div> <!-- Category Select -->
+            
             <div class="form-group col-md-2">
                 <input type="text" class="form-control" id="searchTerm" name="searchTerm" placeholder="Search Term"
                 [(ngModel)]="term">
-            </div>
+            </div> <!--Search Term Input  -->
             
         
         </div>
