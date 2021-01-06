@@ -1,6 +1,9 @@
 <div class="container">
   <h1 class="">{{ title }}</h1>
   <hr>
+
+  <ul class="list-group" [innerHtml]="errors" id="createErrorMessages"></ul>
+
   <div class="row">
     <div class="col-6" id='formInput'>
       <form (ngSubmit)="onSubmit()" #f="ngForm">
@@ -16,10 +19,9 @@
               type="text"
               id="dvdTitle"
               class="form-control"
-              ngModel
+              [(ngModel)]="newDvd.title"
               name="dvdTitle"
-              placeholder="Enter Title"
-              required>
+              placeholder="Enter Title">
           </div> <!-- formgroup: dvdTitle -->
 
           <div class="form-group">
@@ -30,7 +32,7 @@
               max="2021"
               id="dvdReleaseYear"
               class="form-control"
-              ngModel
+              [(ngModel)]="newDvd.releaseYear"
               name="dvdReleaseYear"
               placeholder="Enter Release Year"
               required
@@ -46,7 +48,7 @@
               type="text"
               id="dvdDirector"
               class="form-control"
-              ngModel
+              [(ngModel)]="newDvd.director"
               name="dvdDirector"
               placeholder="Enter Director"
               required
@@ -61,7 +63,7 @@
               id="dvdRating"
               class="form-control"
               name="dvdRating"
-              [(ngModel)]="selectedRating"
+              [(ngModel)]="newDvd.rating"
               >
               
               <option value="G">G</option>
@@ -82,7 +84,7 @@
                 name="dvdNotes"
                 rows="3"
                 class="form-control"
-                [(ngModel)]="note"></textarea>
+                [(ngModel)]="newDvd.notes"></textarea>
             </div> <!-- formgroup: dvdNotes -->
 
 
@@ -99,7 +101,7 @@
               <button
             class="offset-sm-1 btn btn-primary"
             type="submit"
-            [disabled]="!f.valid">Create Dvd</button>
+            >Create Dvd</button>
             </div>
 
 

@@ -10,9 +10,18 @@ import {Dvd} from './../../dvd'
   styleUrls: ['./create-home.component.css']
 })
 export class CreateHomeComponent implements OnInit {
-  newDvd: Dvd;
+  newDvd: Dvd = {
+    id: null,
+    title: '',
+    director: '',
+    rating: '',
+    releaseYear: null, 
+    notes: ''
+  };
+
   title = 'Create Dvd';
-  
+  errors = '';
+
   selectedRating= 'G';
   note='';
 
@@ -33,40 +42,45 @@ export class CreateHomeComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     //fill new dvd with user input
-    this.newDvd = {
-      id: null,
-      title: this.createDvdForm.value.dvdData.dvdTitle,
-      releaseYear: this.createDvdForm.value.dvdData.dvdReleaseYear, 
-      director: this.createDvdForm.value.dvdData.dvdDirector,
-      rating: this.selectedRating, 
-      notes: this.createDvdForm.value.dvdData.dvdNotes
+    console.log(this.newDvd);
+    if(this.validInput()){
+      this.errors='';
+
+      this.addDvd(this.newDvd);
+
+    this.createDvdForm.reset();
+    this.submitted=false;
     }
 
-    console.log(this.newDvd)
 
+
+
+
+  }
+
+  addDvd(newDvd: Dvd){
     this.dvdServ.addDvd(this.newDvd)
     .subscribe(response => console.log(response.toString))
     ;
-
-    this.createDvdForm.reset();
-    //service.add
-
-
-
-
-    // this.dvd.title = this.createDvdForm.value.dvdData.dvdTitle;
-    // this.dvd.releaseYear = this.createDvdForm.value.dvdData.dvdReleaseYear;
-    // this.dvd.director = this.createDvdForm.value.dvdData.dvdDirector;
-    // this.dvd.rating = this.selectedRating;
-    // this.dvd.notes = this.createDvdForm.value.dvdData.dvdNotes;
-
-    // console.log(this.dvd.rating);
-
-    // this.dvdS.addDvd(this.dvd);
-
   }
 
   onCancel(){
     this.location.back();
   }
+
+  validInput(): boolean{
+    if(this.newDvd.title==""){
+      this.errors='<li class=" alert alert-danger">Please enter a title for the Dvd </li>';
+    }else if(this.newDvd.releaseYear == null){
+      this.errors='<li class=" alert alert-danger">Please enter a release year </li>';
+    }else if(this.newDvd.releaseYear.toString.length !==4){
+      this.errors='<li class=" alert alert-danger">Please enter a 4-digit year </li>';
+      return false;
+    }else{
+      return true;
+    }
+
+  }
+
+
 }
