@@ -12,6 +12,7 @@ import {Dvd} from './../../dvd'
 export class CreateHomeComponent implements OnInit {
 
   title = 'Create Dvd';
+
   newDvd: Dvd = {
     id: null,
     title: '',
@@ -27,18 +28,18 @@ export class CreateHomeComponent implements OnInit {
     
   }
 
-  constructor(private dvdServ: DvdService, private route: ActivatedRoute, private location: Location) {
-    
-  }
+  constructor(
+    private dvdServ: DvdService,
+    private route: ActivatedRoute,
+    private location: Location
+    ) {}
 
 
   @ViewChild('f', { static: false }) createDvdForm: NgForm;
 
-  submitted = false;
-
 
   onSubmit() {
-    //fill new dvd with user input
+    // validate input and add dvd
     if(this.validInput()){
       this.errors='';
       this.addDvd();
@@ -59,6 +60,7 @@ export class CreateHomeComponent implements OnInit {
   }
 
   validInput(): boolean{
+    // validate title exits, year is 4 digit number
     if(this.newDvd.title==""){
       this.errors='<li class=" alert alert-danger">Please enter a title for the Dvd </li>';
       return false;

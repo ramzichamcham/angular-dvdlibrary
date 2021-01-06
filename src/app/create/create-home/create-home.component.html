@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="">{{ title }}</h1>
   <hr>
-
+<!-- Error list -->
   <ul class="list-group" [innerHtml]="errors" id="createErrorMessages"></ul>
 
   <div class="row">
@@ -37,7 +37,6 @@
               placeholder="Enter Release Year"
               required
               >
-            <!-- <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span> -->
           </div> <!-- formgroup: dvdReleaseYear -->
 
 
@@ -52,9 +51,8 @@
               name="dvdDirector"
               placeholder="Enter Director"
               required
-            >
+            > 
 
-            <!-- <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span> -->
           </div> <!-- formgroup: dvdDirector-->
 
           <div class="form-group">
@@ -95,25 +93,21 @@
                 type="button"
                 (click)='onCancel()'
                 >Cancel</button>
-              </form>
-              
+              </form> <!-- Cancel button -->
 
               <button
             class="offset-sm-1 btn btn-primary"
             type="submit"
-            >Create Dvd</button>
+            >Create Dvd</button> <!-- Create Dvd Button  -->
             </div>
 
 
 
-        </div> <!-- #userData-->
+        </div>
 
   </form>
     </div> <!-- formInput -->
 
-    
-
-<!-- YOUR DATA -->
 
   </div> <!-- row -->
 </div> <!-- container -->
