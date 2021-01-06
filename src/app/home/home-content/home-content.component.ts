@@ -47,7 +47,7 @@ export class HomeContentComponent implements OnInit {
   }
 
   delete(id: number){
-    if(window.confirm('Are sure you want to delete this item ?')){
+    if(window.confirm('Are sure you want to delete this Dvd from your collection ?')){
       this.dvdServ.deleteById(id)
       .subscribe(response => console.log(response));
       
