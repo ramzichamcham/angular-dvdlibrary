@@ -2,6 +2,7 @@
     <h1 class="">{{ title }}</h1>
     <hr>
 
+    <!-- Error list -->
     <ul class="list-group" [innerHtml]="errors" id="editErrorMessages"></ul>
 
 
@@ -37,7 +38,6 @@
                 [(ngModel)]="dvd.releaseYear"
                 name="dvdReleaseYear"
                 required
-                #dvdReleaseYear="ngModel"
                 >
             </div> <!-- formgroup: dvdReleaseYear -->
   
@@ -54,9 +54,7 @@
                 name="dvdDirector"
                 required
               >
-  
-              <!-- <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span> -->
-            </div> <!-- formgroup: dvdDirector-->
+              </div> <!-- formgroup: dvdDirector-->
   
             <div class="form-group">
               <label for="dvdRating">Rating</label>
@@ -91,20 +89,20 @@
                 <button
                 class="btn btn-primary"
                 (click)="onCancel()"
-                >Cancel</button>
+                >Cancel</button><!-- Save changes button -->
   
                 <button
               class="offset-sm-1 btn btn-primary"
               type="submit"
               (click)="onSubmit()"
-              >Save Changes</button>
+              >Save Changes</button>  <!-- Save changes button -->
               </div>
+
   
   
+          </div> 
   
-          </div> <!-- #userData-->
-  
-    </form>
+        </form>
       </div> <!-- formInput -->
 
     </div> <!-- row -->

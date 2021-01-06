@@ -28,6 +28,7 @@ export class EditHomeComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     this.getDvd();
   }
 
@@ -39,7 +40,7 @@ export class EditHomeComponent implements OnInit {
 
 
   onSubmit() {
-
+    // validate input, update dvd and go back to home
     if(this.validInput()){
       this.updateDvd();
       this.goBack();
@@ -47,18 +48,22 @@ export class EditHomeComponent implements OnInit {
 
 
   }
-
+  // get dvd by id
   getDvd() {
+    //get id from path
     const id = +this.route.snapshot.paramMap.get('id');
+    //get dvd by id using service
     this.dvdServ.getDvd(id)
     .subscribe(dvd => this.dvd = dvd);
   }
 
   onCancel(){
+    //go back
     this.location.back();
   }
 
   updateDvd(){
+    //update dvd using service
     this.dvdServ.updateDvd(this.dvd)
     .subscribe(response => console.log(response));
     ;
@@ -69,6 +74,7 @@ export class EditHomeComponent implements OnInit {
   }
   
   validInput(): boolean{
+    // check title exists, and release year is 4 digit number
     if(this.dvd.title==""){
       this.errors='<li class=" alert alert-danger">Please enter a title for the Dvd </li>';
       return false;
