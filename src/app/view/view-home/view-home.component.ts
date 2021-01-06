@@ -30,8 +30,10 @@ export class ViewHomeComponent implements OnInit {
 
 
   getDvd() {
+    //get dvd id from path
     const id = +this.route.snapshot.paramMap.get('id');
 
+    //get dvd by id using service
     this.dvdServ.getDvd(id)
     .subscribe(dvd => this.dvd = dvd);
   }
