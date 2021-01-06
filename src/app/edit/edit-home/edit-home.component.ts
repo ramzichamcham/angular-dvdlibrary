@@ -30,9 +30,7 @@ export class EditHomeComponent implements OnInit {
   constructor(private dvdServ: DvdService, 
               private route: ActivatedRoute,
               private location: Location
-    ) {
-    
-  }
+    ) {}
 
   title = 'Edit Dvd';
   @ViewChild('f', { static: false }) createDvdForm: NgForm;
@@ -46,6 +44,7 @@ export class EditHomeComponent implements OnInit {
     this.dvdServ.updateDvd(this.dvd)
     .subscribe(response => console.log(response));
     ;
+    this.goBack();
   }
 
   getDvd() {
@@ -56,6 +55,10 @@ export class EditHomeComponent implements OnInit {
   }
 
   onCancel(){
+    this.location.back();
+  }
+
+  goBack(){
     this.location.back();
   }
   
