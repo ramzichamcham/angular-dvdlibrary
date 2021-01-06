@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DvdService {
+
   private dvdUrl = 'http://localhost:8080/api';  // URL to web api
 
   httpOptions = {
@@ -26,15 +27,14 @@ export class DvdService {
 
   public getByCategory(category, value){
     return this.http.get<Dvd[]>(this.dvdUrl + '/dvds/'+ category + '/' + value);
-
-
   }
 
-  public updateDvd(dvd){
-    const body = JSON.stringify(dvd);
-    return this.http.put('http://localhost:8080/api/dvd' + dvd.id, body, 
-    {headers: new HttpHeaders({'Content-Type': 'application/json'})}
-    );
+  public getDvd(id: number): Observable<Dvd> {
+    return this.http.get<Dvd>(this.dvdUrl + '/dvd/' + id);
+  }
+
+  public updateDvd(dvd: Dvd): Observable<any>{
+    return this.http.put(this.dvdUrl + '/dvd/' + dvd.id , dvd, this.httpOptions);
   }
 
   // public addDvd(dvd){

@@ -1,6 +1,8 @@
+import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { DvdService } from './../../dvd.service';
 import { Component, OnInit, ViewChild} from '@angular/core';
-
+import { Dvd } from './../../dvd';
 import { NgForm } from '@angular/forms';
  
 @Component({
@@ -9,40 +11,53 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./edit-home.component.css']
 })
 export class EditHomeComponent implements OnInit {
+  dvd: Dvd = {
+    id: null,
+    title: '',
+    director: '',
+    rating: '',
+    releaseYear: null, 
+    notes: ''
+  };
+
 
   ngOnInit(): void {
-    
+    this.getDvd();
   }
 
-  constructor(private dvdS: DvdService) {
+
+
+  constructor(private dvdServ: DvdService, 
+              private route: ActivatedRoute,
+              private location: Location
+    ) {
     
   }
 
   title = 'Edit Dvd';
   @ViewChild('f', { static: false }) createDvdForm: NgForm;
 
-  note = '';
 
-  dvd = {
-    title: '',
-    releaseYear: '',
-    director: '',
-    rating: 'G',
-    notes: ''
-  };
   submitted = false;
 
 
   onSubmit() {
-    this.submitted = true;
-    this.dvd.title = this.createDvdForm.value.dvdData.dvdTitle;
-    this.dvd.releaseYear = this.createDvdForm.value.dvdData.dvdReleaseYear;
-    this.dvd.director = this.createDvdForm.value.dvdData.dvdDirector;
-    // this.dvd.rating = this.createDvdForm.value.dvdRating;
-    this.dvd.notes = this.createDvdForm.value.dvdData.dvdNotes;
 
-    console.log(this.dvd.rating);
-    this.dvdS.updateDvd(this.dvd);
+    this.dvdServ.updateDvd(this.dvd)
+    .subscribe(response => console.log(response));
+    ;
   }
+
+  getDvd() {
+    const id = +this.route.snapshot.paramMap.get('id');
+
+    this.dvdServ.getDvd(id)
+    .subscribe(dvd => this.dvd = dvd);
+  }
+
+  onCancel(){
+    this.location.back();
+  }
+  
 
 }

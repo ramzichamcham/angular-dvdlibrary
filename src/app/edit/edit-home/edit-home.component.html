@@ -3,7 +3,16 @@
     <div class="row">
       <div class="col-6" id='formInput'>
         <form (ngSubmit)="onSubmit()" #f="ngForm">
-  
+            <!-- <ul>
+                <li class="alert alert-danger" *ngIf="!dvdReleaseYear.valid">
+                    Please enter a valid year
+                </li>
+                <li class="alert alert-danger" *ngIf="dvdReleaseYear.error.minlength">
+                    Please enter a 4 digit year
+                </li>
+            </ul> -->
+
+
           <div
             id="dvd-data"
             ngModelGroup="dvdData"
@@ -15,7 +24,7 @@
                 type="text"
                 id="dvdTitle"
                 class="form-control"
-                ngModel
+                [(ngModel)]="dvd.title"
                 name="dvdTitle"
                 required>
             </div> <!-- formgroup: dvdTitle -->
@@ -26,15 +35,17 @@
                 type="number"
                 min="1900"
                 max="2021"
+                minlength="4"
                 id="dvdReleaseYear"
                 class="form-control"
-                ngModel
+                [(ngModel)]="dvd.releaseYear"
                 name="dvdReleaseYear"
                 required
+                #dvdReleaseYear="ngModel"
                 >
-              <!-- <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span> -->
             </div> <!-- formgroup: dvdReleaseYear -->
   
+
   
   
             <div class="form-group">
@@ -43,7 +54,7 @@
                 type="text"
                 id="dvdDirector"
                 class="form-control"
-                ngModel
+                [(ngModel)] = "dvd.director"
                 name="dvdDirector"
                 required
               >
@@ -56,7 +67,8 @@
               <select
                 id="dvdRating"
                 class="form-control"
-                name="dvdRating">
+                name="dvdRating"
+                [(ngModel)]="dvd.rating">
                 <option value="G">G</option>
                 <option value="PG">PG</option>
                 <option value="PG-13">PG-13</option>
@@ -75,14 +87,14 @@
                   name="dvdNotes"
                   rows="3"
                   class="form-control"
-                  [(ngModel)]="note"></textarea>
+                  [(ngModel)]="dvd.notes"></textarea>
               </div> <!-- formgroup: dvdNotes -->
   
   
               <div class="row">
                 <button
                 class="btn btn-primary"
-                type="submit"
+                (click)="onCancel()"
                 >Cancel</button>
   
                 <button
