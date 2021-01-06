@@ -1,7 +1,7 @@
 <div class="containter">
     
     
-    <form (ngSubmit)="onSearch()" #f="ngForm">
+    <form (ngSubmit)="onSearch()" #f="ngForm" class="search-top">
 
         <div class="row"
           id="search-data"
@@ -24,7 +24,7 @@
             <div class="form-group col-md-2">
                 <select class="form-control" id="categorySelect" name="categorySelect" 
                 [(ngModel)]="selectedCategory">
-                    <option value="category">Search Category</option>
+                    <option selected="true" disabled value="category">Search Category</option>
                     <option value="title">Title</option>
                     <option value="releaseYear">Release Year</option>
                     <option value="director">Director Name</option>
@@ -32,7 +32,7 @@
                   </select>
             </div>
             <div class="form-group col-md-2">
-                <input type="text" class="form-control" id="searchTerm" name="searchTerm" 
+                <input type="text" class="form-control" id="searchTerm" name="searchTerm" placeholder="Search Term"
                 [(ngModel)]="term">
             </div>
             
